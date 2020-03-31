@@ -4,15 +4,15 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>NAME</th>	
+				<th>NAME</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach($records as $record):?>
-			<tr>
-				<td><?php echo $record['Record']['id']?></td>
-				<td><?php echo $record['Record']['name']?></td>
-			</tr>	
+				<tr>
+					<td><?php echo $record['Record']['id']?></td>
+					<td><?php echo $record['Record']['name']?></td>
+				</tr>
 			<?php endforeach;?>
 		</tbody>
 	</table>
@@ -21,7 +21,8 @@
 <script>
 $(document).ready(function(){
 	$("#table_records").dataTable({
-
+		"processing": true,
+		"serverSide": true,
 	});
 })
 </script>

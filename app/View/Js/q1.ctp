@@ -36,7 +36,7 @@ The table you start with</div>
 	<td><textarea name="data[1][description]" class="m-wrap  description required" rows="2" ></textarea></td>
 	<td><input name="data[1][quantity]" class=""></td>
 	<td><input name="data[1][unit_price]"  class=""></td>
-	
+
 </tr>
 
 </tbody>
@@ -68,12 +68,11 @@ $(document).ready(function(){
 
 
 		alert("suppose to add a new row");
-		
+
 
 		});
 
-	
+
 });
 </script>
 <?php $this->end();?>
-

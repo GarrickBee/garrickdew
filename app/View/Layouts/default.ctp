@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 2.3.1
 Version: 1.3
 Author: KeenThemes
@@ -18,7 +18,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    <meta content="" name="description" />
    <meta content="" name="author" />
    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-   <?php 
+   <?php
    		echo $this->Html->css('/metronic_new/plugins/bootstrap/css/bootstrap.min');
    		echo $this->Html->css('/metronic_new/plugins/bootstrap/css/bootstrap-responsive.min');
    		echo $this->Html->css('/metronic_new/plugins/font-awesome/css/font-awesome.min');
@@ -29,8 +29,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    		echo $this->Html->css('/metronic_new/plugins/uniform/css/uniform.default');
    ?>
    <!-- END GLOBAL MANDATORY STYLES -->
-   <!-- BEGIN PAGE LEVEL STYLES --> 
-   <?php 
+   <!-- BEGIN PAGE LEVEL STYLES -->
+   <?php
 //    		echo $this->Html->css('/metronic_new/plugins/select2-3.4.0/select2');
    		echo $this->Html->css('/metronic_new/plugins/jquery-ui/jquery-ui-1.10.1.custom.min');
 //    	echo $this->Html->css('/metronic_new/plugins/jquery-ui/jquery.ui.slider');
@@ -51,12 +51,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
    		echo $this->Html->css('/metronic_new/css/pages/profile');
    		echo $this->Html->css('/metronic_new/css/pages/search');
    		echo $this->Html->css('/metronic_new/plugins/bootstrap-modal/css/bootstrap-modal');
-   		
+
    		echo $this->Html->css('/metronic_new/css/pages/invoice');
    		echo $this->Html->css('/metronic_new/css/print',null,array('media'=>'print'));
-   		
+
    ?>
- 
+
    </style>
 </head>
 <!-- BEGIN BODY -->
@@ -68,7 +68,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<?php echo $this->Html->link($this->Html->image('http://www.dewtouch.com/images/logo.png',array('style'=>'height: 40px')),'/',array('escape'=>false))?>
-				
+
 			</div>
 		</div>
 		<!-- END TOP NAVIGATION BAR -->
@@ -79,29 +79,29 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		<?php echo $this->Session->flash(); ?>
 		<div><?php echo $this->fetch('content')?></div>
 	</div>
-	
-	 <?php 
+
+	 <?php
    		echo $this->Html->script('/metronic_new/plugins/jquery-1.10.2.min');
    		echo $this->Html->script('/metronic_new/plugins/jquery-migrate-1.2.1.min');
    ?>
-    <?php 
+    <?php
    		echo $this->Html->script('/metronic_new/plugins/jquery-ui/jquery-ui-1.10.1.custom.min');
    		echo $this->Html->script('/metronic_new/plugins/bootstrap/js/bootstrap.min');
    		echo $this->Html->script('jquery.dataTables.js?v=2');
    		echo $this->Html->script('/metronic_new/plugins/data-tables/DT_bootstrap');
-   		
+
    		echo $this->Html->script('/metronic_new/plugins/bootstrap-modal/js/bootstrap-modal');
    		echo $this->Html->script('/metronic_new/plugins/bootstrap-modal/js/bootstrap-modalmanager');
-   		
+
    		echo $this->Html->script('/metronic_new/plugins/jquery.blockui.min');
-   		
+
    		echo $this->Html->script('own');
    ?>
-   
+
 	<script>
 	App = {};
 	App.blockUI = function (el, centerY) {
-    	var el = jQuery(el); 
+    	var el = jQuery(el);
     	el.block({
     		message: '<img src="metronic_new/img/ajax-loading.gif" align="">',
     		centerY: centerY != undefined ? centerY : true,
@@ -126,7 +126,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         });
 	}
 
-    
+
 	$(document).ready(function(){
 		 $("body").on("click","[data-href] [href]",function(e){
 				var href = $(this).attr('href');
@@ -137,7 +137,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					e.stopPropagation();
 				}
 		});
-			
+
  	  $('body').on('click','[data-href]',function(event){
      	  var target = $(event.target);
      	  if(target.data('toggle') || target.parent().data('toggle')){
@@ -153,36 +153,36 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
          	  {
          		location.href = $(this).data('href');
          	  }
- 			
+
  			return false;
      	  }
  		});
 
-			
- 	  
- 	
- 	  
+
+
+
+
  	  $('body').on('click','[data-modal-href]',function(event){
      	  event.preventDefault();
 
 				if($(this).hasClass("disabled"))
 					return false;
-     	  
+
      	  	App.blockUI('body');
  			var url = $(this).data('modal-href');
- 			
+
  			var title = $(this).data('modal-title');
  			var full_width = $(this).data('modal-full-width');
 
- 			
- 			$.ajax(url).done(function(data){	
+
+ 			$.ajax(url).done(function(data){
 					//alert(data);
 					if(full_width){
 						$.Modal.popup(title,data,true);
 					}else{
 						$.Modal.popup(title,data);
 					}
-					
+
  			}).always(function(data){
  				App.unblockUI('body');
  			});
@@ -196,33 +196,33 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
      	  if($(this).hasClass("disabled"))
 					return false;
-     	  
+
      	  	App.blockUI('body');
  			var url = $(this).data('replaced-modal-href');
 				var required = true;
 				if(typeof $(this).data('replacement-required') != 'undefined'){
 					required = $(this).data('replacement-required');
 				}
- 			
+
  			$replaced_element = $("#"+$(this).data('replacement-element-id'));
 
  			if(required && $replaced_element.val()=="")
  			{
-     			
+
      			$.Modal.popup("<?php echo __('Error')?>",$(this).data('error-message'));
      			App.unblockUI('body');
      			return false;
  			}
 				url = decodeURI(url);
  			url = url.replace("[replaced]",$replaced_element.val());
- 			
+
  			var title = $(this).data('modal-title');
 
 
  			var full_width = $(this).data('modal-full-width');
 
- 			
- 			$.ajax(url).done(function(data){	
+
+ 			$.ajax(url).done(function(data){
 					//alert(data);
  				if(full_width){
 						$.Modal.popup(title,data,true);
@@ -242,7 +242,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
      	  if($(this).hasClass("disabled"))
 					return false;
-     	  
+
      	  	App.blockUI('body');
  			var url = $(this).data('replaced-attr-modal-href');
 
@@ -253,18 +253,18 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
  			if($replaced_element.attr($replaced_attr)=="")
  			{
-     			
+
      			$.Modal.popup("<?php echo __('Error')?>",$(this).data('error-message'));
      			App.unblockUI('body');
      			return false;
  			}
 
  			url = url.replace("[replaced]",$replaced_element.attr($replaced_attr));
- 			
+
  			var title = $(this).data('modal-title');
 
- 			
- 			$.ajax(url).done(function(data){	
+
+ 			$.ajax(url).done(function(data){
 					//alert(data);
 					$.Modal.popup(title,data);
  			}).always(function(data){
