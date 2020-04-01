@@ -17,7 +17,7 @@
 					</ul>
 
 					<div class="tab-content">
-						
+
 						<div class="tab-pane row-fluid active" id="tab_item">
 
 							<div class="row-fluid">
@@ -29,33 +29,33 @@
 										</tr>
 									</thead>
 									<tbody>
-									<?php foreach($order_reports as $k => $order_report):?>
-										<tr class="item_tr" style="background-color:#fff;">
-											<td><span class="row-details row-details-close"></span></td>
-											<td colspan="2"><?php echo $k?></td>
-										</tr>
-										<tr class="hide">
-											<td></td>
-											<td colspan="2">
-												<table style="width:100%">
-													<thead>
-														<tr>
-															<th style="border-left:none;width:50%">Part Name</th>
-															<th>Value</th>
-														</tr>
-													</thead>
-													<tbody>
-													<?php foreach($order_report as $q => $val):?>
-														<tr>
-															<td style="border-left:none;width:50%"><?php echo $q?></td>
-															<td><?php echo $val?></td>
-														</tr>
-													<?php endforeach;?>
-													</tbody>
-												</table>
-											</td>
-										</tr>
-									<?php endforeach;?>
+										<?php foreach($order_reports as $k => $order_report):?>
+											<tr class="item_tr" style="background-color:#fff;">
+												<td><span class="row-details row-details-close"></span></td>
+												<td colspan="2"><?php echo $k?></td>
+											</tr>
+											<tr class="hide">
+												<td></td>
+												<td colspan="2">
+													<table style="width:100%">
+														<thead>
+															<tr>
+																<th style="border-left:none;width:50%">Part Name</th>
+																<th>Value</th>
+															</tr>
+														</thead>
+														<tbody>
+															<?php foreach($order_report as $q => $val):?>
+																<tr>
+																	<td style="border-left:none;width:50%"><?php echo $q?></td>
+																	<td><?php echo $val?></td>
+																</tr>
+															<?php endforeach;?>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										<?php endforeach;?>
 									</tbody>
 								</table>
 							</div>
@@ -72,20 +72,20 @@
 <?php $this->start('script_own')?>
 <script>
 $(document).ready(function(){
-	
+
 	$("body").on('click','tbody tr.item_tr',function(){
 
-	  	if($(this).next().hasClass("hide")) {
+		if($(this).next().hasClass("hide")) {
 			$(this).next().removeClass("hide");
-	   		$(this).find("td").eq(0).find("span").eq(0).removeClass("row-details-close").addClass("row-details-open");
-	 	}else{
-	   		$(this).next().addClass("hide");
-	   		$(this).find("td").eq(0).find("span").eq(0).removeClass("row-details-open").addClass("row-details-close");
-	 	}
+			$(this).find("td").eq(0).find("span").eq(0).removeClass("row-details-close").addClass("row-details-open");
+		}else{
+			$(this).next().addClass("hide");
+			$(this).find("td").eq(0).find("span").eq(0).removeClass("row-details-open").addClass("row-details-close");
+		}
 
-	  return false;
-	 });
-	
+		return false;
+	});
+
 })
 </script>
 <?php $this->end()?>
