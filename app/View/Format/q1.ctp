@@ -1,68 +1,44 @@
-
 <div id="message1">
-
-
-<?php echo $this->Form->create('Type',array('id'=>'form_type','type'=>'file','class'=>'','method'=>'POST','autocomplete'=>'off','inputDefaults'=>array(
-				
-				'label'=>false,'div'=>false,'type'=>'text','required'=>false)))?>
-	
-<?php echo __("Hi, please choose a type below:")?>
-<br><br>
-
-<?php $options_new = array(
- 		'Type1' => __('<span class="showDialog" data-id="dialog_1" style="color:blue">Type1</span><div id="dialog_1" class="hide dialog" title="Type 1">
- 				<span style="display:inline-block"><ul><li>Description .......</li>
- 				<li>Description 2</li></ul></span>
- 				</div>'),
-		'Type2' => __('<span class="showDialog" data-id="dialog_2" style="color:blue">Type2</span><div id="dialog_2" class="hide dialog" title="Type 2">
- 				<span style="display:inline-block"><ul><li>Desc 1 .....</li>
- 				<li>Desc 2...</li></ul></span>
- 				</div>')
-		);?>
-
-<?php echo $this->Form->input('type', array('legend'=>false, 'type' => 'radio', 'options'=>$options_new,'before'=>'<label class="radio line notcheck">','after'=>'</label>' ,'separator'=>'</label><label class="radio line notcheck">'));?>
-
-
-<?php echo $this->Form->end();?>
-
+	<?php echo $this->Form->create(false,array( 'url' => array('controller' => 'format', 'action' => 'result'),'id'=>'form_type','method'=>'POST'))?>
+	<?php echo __("Hi, please choose a type below:")?>
+	<?php
+	// Data from database
+	$options = array(
+		array(
+			'value' => 'Type 1',
+			'title' => 'Type 1',
+			'content' => '<ul><li>Description .......</li><li>Description 2</li></ul>'
+		),
+		array(
+			'value' => 'Type 2',
+			'title' => 'Type 2',
+			'content' => '<ul><li>Description .......</li><li>Description 2</li></ul>'
+		)
+	);
+	foreach ($options as $option_key => $option)
+	{
+		$content = str_replace('"', "'", $option['content']);
+		echo "<label for'type-{$option_key}' class='radio'>";
+		echo "<input type='radio' id='type-{$option_key}' name='data[Type][type]' value='{$option['value']}' class='custom-popover' required>";
+		echo "<span	class='custom-popover text-info' data-content='{$content}'
+		data-title='{$option['title']}'
+		data-html=true
+		data-trigger='hover'
+		data-placement='right'> {$option['title']}</span>";
+		?>
+	</label>
+	<div class="custom-popover-container-<?php echo $option_key ?>" ></div>
+<?php } ?>
+<div class="btn-group">
+	<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </div>
-
-<style>
-.showDialog:hover{
-	text-decoration: underline;
-}
-
-#message1 .radio{
-	vertical-align: top;
-	font-size: 13px;
-}
-
-.control-label{
-	font-weight: bold;
-}
-
-.wrap {
-	white-space: pre-wrap;
-}
-
-</style>
-
+<?php echo $this->Form->end();?>
+</div>
 <?php $this->start('script_own')?>
 <script>
-
-$(document).ready(function(){
-	$(".dialog").dialog({
-		autoOpen: false,
-		width: '500px',
-		modal: true,
-		dialogClass: 'ui-dialog-blue'
-	});
-
-	
-	$(".showDialog").click(function(){ var id = $(this).data('id'); $("#"+id).dialog('open'); });
-
-})
-
-
+$(document).ready(function()
+{
+	$(".custom-popover").popover();
+});
 </script>
 <?php $this->end()?>
