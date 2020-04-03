@@ -12,6 +12,8 @@ class MigrationController extends AppController
 		// Assuming Migrated Database contain transaction details that doesnt have
 		// in current database
 		// Assuming all transaction is unique
+		// Date created follow the old Database
+		// Date modified as date migrated
 		$this->setFlash('Question: Migration of data to multiple DB table');
 	}
 
@@ -52,8 +54,8 @@ class MigrationController extends AppController
 		for ($row = 2; $row <= $highest_row; $row++)
 		{
 			$row_data    = $sheet->rangeToArray('A' . $row . ':' . $highest_column . $row,NULL,TRUE,TRUE,FALSE)[0];
-			$member_array = explode(" ",$row_data[3]);
 
+			$member_array = explode(" ",$row_data[3]);
 			$member_type  = $member_array[0];
 			$member_no    = intval($member_array[1]);
 			// Check duplicate Member ID in excel file
@@ -103,6 +105,7 @@ class MigrationController extends AppController
 				'created'     => date("Y-m-d H:i:s",strtotime($row_data[0])),
 			);
 		}
+
 		$current_member_data = $this->import_and_get_latest_user_id($members_data);
 
 		// Merge into Member Transaction data
@@ -126,6 +129,7 @@ class MigrationController extends AppController
 		// $this->garrick_print($data);
 		$this->loadModel('Transaction');
 		$this->Transaction->saveMany($data,array('deep' => true));
+		$this->setFlash("Migrated successfully.",array('class'=>'success'));
 	}
 
 	private function import_and_get_latest_user_id( $members_data='')

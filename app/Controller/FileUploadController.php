@@ -25,31 +25,37 @@ class FileUploadController extends AppController {
 			$this->setFlash('Error on file upload',array('class'=>'danger'));
 			return $this->redirect(array('controller' => 'FileUpload','action'=>'index'));
 		}
-
+		// CSV file type
 		$file_type_required = array(
 			'text/csv',
+			'text/plain',
 			'application/csv',
 			'text/comma-separated-values',
+			'application/excel',
+			'application/vnd.ms-excel',
+			'application/vnd.msexcel',
+			'text/anytext',
+			'application/octet-stream',
+			'application/txt',
 		);
 		if (!in_array($file['type'],$file_type_required)){
 			return $this->setFlash('Error on upload. Only CSV file type upload are allowed.');
 		}
-
+		
 		// Import File
 		$data_imported = $this->parse_csv( file_get_contents($file['tmp_name']) );
 		$data_field    = array_map('strtolower',$data_imported[0]);
 		unset($data_imported[0]);
 		$field_allow   = array('name','email');		// Table field allowed
 
-		// Check Header Exist
+		// Check table field exist
 		foreach ($data_field as $field_key => $field_value)
 		{
-			if ( !in_array(strtolower($field_value),$data_field))
+			if ( !in_array(strtolower($field_value),$field_allow))
 			{
 				return $this->setFlash("Error on uploading. Field Value : {$field_value} does not exist in database.");
 			}
 		}
-
 		// Genrate Cake PHP data format
 		foreach ($data_imported as $data_key => $data_value)
 		{

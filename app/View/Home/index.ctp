@@ -30,7 +30,7 @@
 				<td></td>
 				<td><?php echo $this->Html->link('Click Me','/Record')?></td>
 			</tr>
-			
+
 			<tr>
 				<td><?php echo __('2')?></td>
 				<td><?php echo __('Change Display Format From Popup to Mouse over')?></td>
@@ -46,7 +46,7 @@
 				<td><?php echo $this->Html->link('View Detail','/Format/q1_detail')?></td>
 				<td><?php echo $this->Html->link('Click Me','/Format/q1')?></td>
 			</tr>
-			
+
 			<tr>
 				<td>3</td>
 				<td>Advanced Input Field</td>
@@ -59,12 +59,12 @@
 					<?php echo $this->Html->image('rating.png',array('style'=>'width: 15px'))?>
 					<?php echo $this->Html->image('rating.png',array('style'=>'width: 15px'))?>
 					<span style="background-color:#fafafa;width: 14px;height: 16px;display: inline-block;margin-left: -10px;/* padding: 1px; */vertical-align: bottom;"></span>
-					
+
 				</td>
 				<td><?php //echo $this->Html->link('View Detail','/Format/q1_detail')?></td>
 				<td><?php echo $this->Html->link('Click Me','/Js/q1')?></td>
 			</tr>
-			
+
 			<tr>
 				<td>4</td>
 				<td>Complete the File Upload feature</td>
@@ -77,7 +77,7 @@
 				<td></td>
 				<td><?php echo $this->Html->link('Click Me','/FileUpload')?></td>
 			</tr>
-			
+
 			<tr>
 				<td>5</td>
 				<td>Multidimensional Array</td>
@@ -91,7 +91,7 @@
 				<td><?php echo $this->Html3->link('View Detail','/OrderReport/question',array('data-modal-full-width'=>true,))?></td>
 				<td><?php echo $this->Html->link('Click Me','/OrderReport')?></td>
 			</tr>
-			
+
 			<tr>
 				<td><?php echo __('6')?></td>
 				<td><?php echo __('Migration of data to multiple DB table')?></td>
@@ -102,10 +102,10 @@
 					<?php echo $this->Html->image('rating.png',array('style'=>'width: 15px'))?>
 					<?php echo $this->Html->image('rating.png',array('style'=>'width: 15px'))?>
 					<?php echo $this->Html->image('rating.png',array('style'=>'width: 15px'))?>
-					
+
 				</td>
 				<td><?php echo $this->Html3->link('View Detail','/Migration/q1_instruction')?></td>
-				<td><?php //echo $this->Html->link('Click Me','/Migration/q1')?></td>
+				<td><?php echo $this->Html->link('Click Me','/Migration/')?></td>
 			</tr>
 		</tbody>
 	</table>

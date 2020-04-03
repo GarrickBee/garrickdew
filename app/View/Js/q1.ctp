@@ -67,7 +67,7 @@
 			$(wrapper).append(
 				'<tr data-input="'+x+'">' +
 				'<td><button type="button" name="button" class="btn red remove_field" >x</button>	</td>'+
-				'<td class="custom-input"><span></span><textarea name="data['+x+'][description]" class="m-wrap  description required boxsizingBorder" rows="2" style="width:100%"></textarea></td>'+
+				'<td class="custom-input"><span></span><textarea name="data['+x+'][description]" class="m-wrap  description required boxsizingBorder" rows="2" style="width:100%;display:none"></textarea></td>'+
 				'<td class="custom-input" ><span></span><input type="number" min="0" name="data['+x+'][quantity]" class="boxsizingBorder" style="width:100%;height:100%;display:none"></td>'+
 				'<td class="custom-input"><span></span><input type="number" min="0" name="data['+x+'][unit_price]"  class="boxsizingBorder" style="width:100%;height:100%;display:none"></td>'+
 				'</tr>'

@@ -33,6 +33,7 @@ class RecordController extends AppController
 		$order  = empty($param['iSortCol_0'])?"":$table_field[$param['iSortCol_0']]." ".$param['sSortDir_0'];
 		$offset = empty($param['iDisplayStart'])?'':$param['iDisplayStart'];
 		$conditions = array();
+		
 		if (!empty($param['sSearch']))
 		{
 			foreach ($table_field as $key => $value)
