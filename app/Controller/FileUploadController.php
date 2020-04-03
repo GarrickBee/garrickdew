@@ -30,9 +30,6 @@ class FileUploadController extends AppController {
 			'text/csv',
 			'application/csv',
 			'text/comma-separated-values',
-			'application/excel',
-			'application/vnd.ms-excel',
-			'application/vnd.msexcel',
 		);
 		if (!in_array($file['type'],$file_type_required)){
 			return $this->setFlash('Error on upload. Only CSV file type upload are allowed.');

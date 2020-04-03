@@ -1,4 +1,7 @@
-
+<!-- From top base_url constant -->
+<script type="text/javascript">
+var base_url = '<?php echo $this->webroot ?>';
+</script>
 <div class="row-fluid">
 	<table class="table table-bordered" id="table_records">
 		<thead>
@@ -7,23 +10,29 @@
 				<th>NAME</th>
 			</tr>
 		</thead>
-		<tbody>
-			<?php foreach($records as $record):?>
-				<tr>
-					<td><?php echo $record['Record']['id']?></td>
-					<td><?php echo $record['Record']['name']?></td>
-				</tr>
-			<?php endforeach;?>
-		</tbody>
-	</table>
+		<!-- <tbody>
+		<?php foreach($records as $record):?>
+		<tr>
+		<td><?php echo $record['Record']['id']?></td>
+		<td><?php echo $record['Record']['name']?></td>
+	</tr>
+<?php endforeach;?>
+</tbody> -->
+</table>
 </div>
 <?php $this->start('script_own')?>
 <script>
 $(document).ready(function(){
-	$("#table_records").dataTable({
-		"processing": true,
-		"serverSide": true,
-	});
-})
+
+	$("#table_records").dataTable(
+		{
+			bProcessing: true,
+			bServerSide: true,
+			sAjaxSource: base_url+'record/get_record',
+		}
+	);
+
+
+});
 </script>
 <?php $this->end()?>

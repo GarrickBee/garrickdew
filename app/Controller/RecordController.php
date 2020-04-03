@@ -1,8 +1,6 @@
 <?php
 class RecordController extends AppController
 {
-	//http://legacy.datatables.net/examples/server_side/row_details.html
-	// public $component = array('RequestHandler');
 	public function index()
 	{
 		ini_set('memory_limit','256M');
